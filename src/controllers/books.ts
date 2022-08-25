@@ -71,7 +71,7 @@ const deleteAllBooks = async (req: Request, res: Response) => {
 };
 
 // updating a book
-const updateBook = async (req: Request, res: Response, next: NextFunction) => {
+const updateBook = async (req: Request, res: Response) => {
 
     if(books.filter(({ id }) => id !== parseInt(req.params.id)).length === books.length)
     {
