@@ -7,7 +7,8 @@ Content-Type: application/json
 
 {
     "title": "Sad Bird still sing",
-    "type": "Poentry"
+    "type": "Poentry",
+    "author": "Faraway"
 }
 
 ### Delete book with a specific id
@@ -26,5 +27,6 @@ Content-Type: application/json
 
 {
     "title": "To Kill a Mockingbird",
-    "type": "Novel"
+    "type": "Novel",
+    "author": "Calle"
 }

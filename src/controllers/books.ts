@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 
-let books: { title: string, type: string, id: number, }[] = [
-    { "title": "Heroes", "type": "Novel","id": 1 },
-    { "title": "Bird", "type": "Newpaper", "id": 2 },
+let books: { title: string, author: string, type: string, id: number, }[] = [
+    { "title": "Heroes", "author": "Robert Cormier", "type": "Novel","id": 1 },
+    { "title": "Bird", "author": "Anna", "type": "Newspaper", "id": 2 },
 ];
 
 // getting all books
@@ -86,6 +86,7 @@ const updateBook = async (req: Request, res: Response, next: NextFunction) => {
             getBook.title = req.body.title;
             getBook.type = req.body.type;
             getBook.id = parseInt(req.params.id);
+            getBook.author = req.body.author;
             res.json(getBook);
         }
     }

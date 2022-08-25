@@ -2,8 +2,10 @@
 Inlämningen 3 - Webutveckling
 
 Uppgiftsbeskrivningen:
--- I denna uppgift skapar jag ett enklare REST-API i NodeJS med express och typescript. REST-API har 4 endpoints (CRUD) för att hämta, posta, deleta och updatera en bok. 
+-- I denna uppgift skapar jag ett enklare REST-API i NodeJS med express och typescript. REST-API har 4 endpoints (CRUD) för att hämta, posta, deleta och updatera en lista med böcker. 
 
+
+Struktur:
 - För att kompilera ett TypeScript-projekt till ett giltigt JavaScript börjar jag med att deklarera ett nytt skript som heter "build" inuti filen package.json.
 - En server.ts fil för att trigga en minimal server.
 - En server.rest fil för att endpointen ska kunna nås via REST Clienten.
@@ -12,7 +14,7 @@ Uppgiftsbeskrivningen:
 - Filen tsconfig.json anger de ursprungliga filerna och kompilator alternativen som behövs för att kompilera projektet.
 
 
--- Vad jag har gjort:
+-- Vilka krav jag har uppfyllt:
 - [x] 1. Projektet innehåller minst 4 st. endpoints (GET, POST, PUT & DELETE för en resurs)
 - [x] 2. Samtliga endpoints skall kunna nås via en REST Client fil (.rest|.http) 
 - [x] 3. Datan som API:et hanterar sparas lokalt i serverfilen
