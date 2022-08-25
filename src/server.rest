@@ -1,0 +1,27 @@
+### Get /
+GET http://localhost:3000/api/books
+
+### Create a post
+POST http://localhost:3000/api/books/add
+Content-Type: application/json
+
+{
+    "id": "7",
+    "title": "Sad Bird still sing",
+    "type": "Poentry"
+}
+
+### Delete post
+DELETE http://localhost:3000/api/books/delete/7
+Content-Type: application/json
+
+
+
+### Update a book
+PUT http://localhost:3000/api/books/update/7
+Content-Type: application/json
+
+{
+    "title": "To Kill a Mockingbird",
+    "type": "Novel"
+}
