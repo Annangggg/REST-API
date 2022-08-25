@@ -15,7 +15,6 @@ const getBooks = ((req: Request, res: Response) => {
     else {
         res.status(200).json({books});
     }
-
 });
 
 // adding a book
@@ -26,7 +25,7 @@ const addBook = async (req: Request, res: Response, next:NextFunction) => {
 
     if(books.find(b => b.title === book.title)) {
 
-        res.status(404).json("Book is already exist!");
+        res.status(400).json("Book already exist!");
 
     }
     else {
@@ -47,9 +46,22 @@ const addBook = async (req: Request, res: Response, next:NextFunction) => {
 // Deleting book with an id
 const deleteBook = async (req: Request, res: Response) => {
     // get the post id from req.params and delete
-    books = books.filter(({ id }) => id !== parseInt(req.params.id));
-    // return list of books 
-    return res.status(200).json(books);
+    if(books.filter(({ id }) => id !== parseInt(req.params.id)).length === books.length)
+    {
+        res.status(404).json("There is no such book!");
+    }
+    else {
+        books = books.filter(({ id }) => id !== parseInt(req.params.id));
+
+        if(books === undefined || books.length === 0)
+        {
+            res.status(404).json("There is no such book!");
+        }
+        else {
+            // return list of books 
+            return res.status(200).json(books);
+        }
+    }
 };
  
 // Deleting all books
@@ -61,15 +73,23 @@ const deleteAllBooks = async (req: Request, res: Response) => {
 // updating a book
 const updateBook = async (req: Request, res: Response, next: NextFunction) => {
 
-    const getBook = books.find(i => i.id === parseInt(req.params.id));
-
-    if(!getBook) return res.status(404).json({})
-    else {
-        getBook.title = req.body.title;
-        getBook.type = req.body.type;
-        getBook.id = parseInt(req.params.id);
-        res.json(getBook);
+    if(books.filter(({ id }) => id !== parseInt(req.params.id)).length === books.length)
+    {
+        res.status(404).json("There is no such book!");
     }
+    else 
+    {
+        const getBook = books.find(i => i.id === parseInt(req.params.id));
+        if(!getBook) return res.status(404).json({})
+
+        else {
+            getBook.title = req.body.title;
+            getBook.type = req.body.type;
+            getBook.id = parseInt(req.params.id);
+            res.json(getBook);
+        }
+    }
+    
 }
  
 export default { getBooks, addBook, deleteBook, updateBook, deleteAllBooks };
