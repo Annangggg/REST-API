@@ -1,4 +1,4 @@
-### Get /
+### Get all posts
 GET http://localhost:3000/api/books
 
 ### Create a post
@@ -7,13 +7,17 @@ Content-Type: application/json
 
 {
     "title": "Sad Bird still sing",
-    "type": "bbbbb"
+    "type": "Poentry"
 }
 
-### Delete post
-DELETE http://localhost:3000/api/books/delete/2
+### Delete post with a specific id
+DELETE http://localhost:3000/api/books/delete/3
 Content-Type: application/json
 
+
+### Delete all books
+DELETE http://localhost:3000/api/books/delete
+Content-Type: application/json
 
 
 ### Update a book
