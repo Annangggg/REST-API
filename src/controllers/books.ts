@@ -24,19 +24,24 @@ const addBook = async (req: Request, res: Response, next:NextFunction) => {
     let book = req.body;
     let id = 1;
 
+    if(books.find(b => b.title === book.title)) {
+
+        res.status(404).json("Book is already exist!");
+
+    }
+    else {
         books.forEach((item) => {
-            if(item.title !== book.title)
+       
+            if (item.id >= id) 
             {
-                if (item.id >= id) 
-                {
-                    id = item.id +1;
-                }
+                id = item.id +1;
             }
         });   
-
-    book.id = id;
-    books.push(book);
-    res.status(201).json(book); 
+        book.id = id;
+        books.push(book);
+        res.status(201).json(book); 
+        return;
+    }
 }
 
 // Deleting book with an id
@@ -60,7 +65,6 @@ const updateBook = async (req: Request, res: Response, next: NextFunction) => {
 
     if(!getBook) return res.status(404).json({})
     else {
-        console.log(getBook);
         getBook.title = req.body.title;
         getBook.type = req.body.type;
         getBook.id = parseInt(req.params.id);
